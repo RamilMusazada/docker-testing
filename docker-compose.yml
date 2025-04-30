@@ -12,7 +12,7 @@ services:
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/demodb
       - SPRING_DATASOURCE_USERNAME=postgres
-      - SPRING_DATASOURCE_PASSWORD=güclü_şifrə_yazın  # Mütləq güclü bir şifrə təyin edin!
+      - SPRING_DATASOURCE_PASSWORD=123  # Güclü bir şifrə istifadə edin!
     networks:
       - spring-network
 
@@ -21,16 +21,16 @@ services:
       context: ./postgres
       dockerfile: Dockerfile
     ports:
-      - "5432:5432"  # Əsas port konfiqurasiyası - ictimai şəbəkədən əlçatan olacaq
+      - "5432:5432"
     environment:
-      - POSTGRES_PASSWORD=güclü_şifrə_yazın  # Mütləq güclü bir şifrə təyin edin!
+      - POSTGRES_PASSWORD=123  # Eyni şifrə burada da olmalıdır
       - POSTGRES_USER=postgres
       - POSTGRES_DB=demodb
     volumes:
       - postgres-data:/var/lib/postgresql/data
     networks:
       - spring-network
-    restart: always  # Server yenidən başladıqda avtomatik işə düşsün
+    restart: always
 
 networks:
   spring-network:
